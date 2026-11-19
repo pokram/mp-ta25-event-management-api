@@ -51,3 +51,24 @@ src/
 └── server.ts              ← käivitab rakenduse pordil ja sulgeb selle korralikult
 tests/                     ← peegeldab src/ struktuuri
 ```
+
+## Töövoog
+
+Iga issue tehakse eraldi harus ja jõuab `master`-isse pull requesti kaudu: **üks issue = üks haru = üks PR.**
+
+1. Loo haru: `git switch -c feat/5-docker-postgres` (issue number + lühike nimi)
+2. Tee muudatused ja commit'id
+3. Enne PR-i: `npm run format`, `npm run lint`, `npm run typecheck`
+4. `git push -u origin <haru>` ja `gh pr create --fill`
+5. PR-i kirjelduses `Closes #<nr>`: issue sulgub merge'i ajal automaatselt
+
+Commit'i sõnum algab eesliitega ([Conventional Commits](https://www.conventionalcommits.org/)):
+
+| Eesliide    | Millal                                       |
+| ----------- | -------------------------------------------- |
+| `feat:`     | uus võimalus                                 |
+| `fix:`      | vea parandus                                 |
+| `refactor:` | koodi ümberkorraldus ilma käitumist muutmata |
+| `chore:`    | seadistus, paketid                           |
+| `docs:`     | README, dokumentatsioon                      |
+| `test:`     | testid                                       |
