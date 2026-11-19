@@ -13,6 +13,8 @@
 ## Käivitamine
 
 ```bash
+cp .env.example .env      # täida väärtused
+docker compose up -d
 npm install
 npm run server
 ```
@@ -30,6 +32,8 @@ Server käivitub aadressil http://localhost:3000. Peatamiseks vajuta `Ctrl+C`.
 | `npm run lint`         | Otsib koodist vigu (oxlint)                                                   |
 | `npm run format`       | Vormindab kõik failid ühtsesse stiili (Prettier)                              |
 | `npm run format:check` | Kontrollib vormingut, faile ei muuda                                          |
+| `docker compose up -d` | Käivitab Postgresi konteineri taustal                                         |
+| `docker compose down`  | Peatab konteineri (andmed jäävad alles)                                       |
 
 ## Kaustastruktuur
 
