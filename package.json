@@ -1,9 +1,7 @@
 {
-  "name": "mp-ta25-event-management-api",
-  "version": "1.0.0",
-  "description": "Ehitad selle rakenduse ise, samm-sammult.",
-  "main": "index.js",
-  
+  "name": "event-management-api",
+  "version": "0.1.0",
+  "description": "Ürituste ja piletimüügi REST API (Node.js, TypeScript, Express, PostgreSQL).",
   "type": "module",
   "scripts": {
     "server": "tsx --env-file=.env src/server.ts",
@@ -11,10 +9,6 @@
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit"
   },
-  
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "express": "^5.3.0"
   },
@@ -24,5 +18,4 @@
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
-  
 }
