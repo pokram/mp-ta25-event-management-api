@@ -21,12 +21,15 @@ Server käivitub aadressil http://localhost:3000. Peatamiseks vajuta `Ctrl+C`.
 
 ## Käsud
 
-| Käsk | Mida teeb |
-|---|---|
-| `npm run server` | Käivitab arendusserveri otse TypeScripti failidest (`tsx`), laeb `.env` faili |
-| `npm run typecheck` | Kontrollib TypeScripti tüübivigu, faile ei loo |
-| `npm run build` | Kompileerib `src/` kausta `dist/` kausta (`tsc`) |
-| `npm start` | Käivitab kompileeritud serveri (`dist/server.js`), tootmiseks |
+| Käsk                   | Mida teeb                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------- |
+| `npm run server`       | Käivitab arendusserveri otse TypeScripti failidest (`tsx`), laeb `.env` faili |
+| `npm run typecheck`    | Kontrollib TypeScripti tüübivigu, faile ei loo                                |
+| `npm run build`        | Kompileerib `src/` kausta `dist/` kausta (`tsc`)                              |
+| `npm start`            | Käivitab kompileeritud serveri (`dist/server.js`), tootmiseks                 |
+| `npm run lint`         | Otsib koodist vigu (oxlint)                                                   |
+| `npm run format`       | Vormindab kõik failid ühtsesse stiili (Prettier)                              |
+| `npm run format:check` | Kontrollib vormingut, faile ei muuda                                          |
 
 ## Kaustastruktuur
 
