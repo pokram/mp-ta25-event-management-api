@@ -10,6 +10,21 @@
 - Node.js 22+
 - npm
 
+## Seadistus
+
+Kopeeri `.env.example` failiks `.env` ja täida väärtused:
+
+| Muutuja             | Näide                                         | Tähendus                               |
+| ------------------- | --------------------------------------------- | -------------------------------------- |
+| `DATABASE_USER`     | `app`                                         | Postgresi kasutaja (Docker)            |
+| `DATABASE_PASSWORD` |                                               | Postgresi parool (Docker)              |
+| `DATABASE_NAME`     | `events`                                      | Andmebaasi nimi (Docker)               |
+| `PORT`              | `3000`                                        | Serveri port (1024-65535)              |
+| `NODE_ENV`          | `development`                                 | `development`, `production` või `test` |
+| `DATABASE_URL`      | `postgres://app:parool@localhost:5432/events` | Rakenduse ühendus andmebaasiga         |
+
+Rakendus kontrollib muutujad käivitamisel (`src/config/env.ts`) ega käivitu, kui mõni on puudu või vale.
+
 ## Käivitamine
 
 ```bash
