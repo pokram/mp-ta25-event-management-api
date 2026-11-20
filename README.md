@@ -14,14 +14,16 @@
 
 Kopeeri `.env.example` failiks `.env` ja täida väärtused:
 
-| Muutuja             | Näide                                         | Tähendus                               |
-| ------------------- | --------------------------------------------- | -------------------------------------- |
-| `DATABASE_USER`     | `app`                                         | Postgresi kasutaja (Docker)            |
-| `DATABASE_PASSWORD` |                                               | Postgresi parool (Docker)              |
-| `DATABASE_NAME`     | `events`                                      | Andmebaasi nimi (Docker)               |
-| `PORT`              | `3000`                                        | Serveri port (1024-65535)              |
-| `NODE_ENV`          | `development`                                 | `development`, `production` või `test` |
-| `DATABASE_URL`      | `postgres://app:parool@localhost:5432/events` | Rakenduse ühendus andmebaasiga         |
+| Muutuja              | Näide                                         | Tähendus                                                                           |
+| -------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `DATABASE_USER`      | `app`                                         | Postgresi kasutaja (Docker)                                                        |
+| `DATABASE_PASSWORD`  |                                               | Postgresi parool (Docker)                                                          |
+| `DATABASE_NAME`      | `events`                                      | Andmebaasi nimi (Docker)                                                           |
+| `PORT`               | `3000`                                        | Serveri port (1024-65535)                                                          |
+| `NODE_ENV`           | `development`                                 | `development`, `production` või `test`                                             |
+| `DATABASE_URL`       | `postgres://app:parool@localhost:5432/events` | Rakenduse ühendus andmebaasiga                                                     |
+| `BETTER_AUTH_SECRET` |                                               | Sessioonide allkirjastamise saladus, vähemalt 32 märki (`openssl rand -base64 48`) |
+| `BETTER_AUTH_URL`    | `http://localhost:3000`                       | Rakenduse aadress (Better Auth)                                                    |
 
 Rakendus kontrollib muutujad käivitamisel (`src/config/env.ts`) ega käivitu, kui mõni on puudu või vale.
 
@@ -38,20 +40,23 @@ Server käivitub aadressil http://localhost:3000. Peatamiseks vajuta `Ctrl+C`.
 
 ## Käsud
 
-| Käsk                   | Mida teeb                                                                     |
-| ---------------------- | ----------------------------------------------------------------------------- |
-| `npm run server`       | Käivitab arendusserveri otse TypeScripti failidest (`tsx`), laeb `.env` faili |
-| `npm run typecheck`    | Kontrollib TypeScripti tüübivigu, faile ei loo                                |
-| `npm run build`        | Kompileerib `src/` kausta `dist/` kausta (`tsc`)                              |
-| `npm start`            | Käivitab kompileeritud serveri (`dist/server.js`), tootmiseks                 |
-| `npm run lint`         | Otsib koodist vigu (oxlint)                                                   |
-| `npm run format`       | Vormindab kõik failid ühtsesse stiili (Prettier)                              |
-| `npm run format:check` | Kontrollib vormingut, faile ei muuda                                          |
-| `docker compose up -d` | Käivitab Postgresi konteineri taustal                                         |
-| `docker compose down`  | Peatab konteineri (andmed jäävad alles)                                       |
-| `npm run db:generate`  | Loob skeemi muudatustest SQL migratsiooni (`migrations/`)                     |
-| `npm run db:migrate`   | Rakendab migratsioonid andmebaasile                                           |
-| `npm run db:studio`    | Avab andmebaasi brauseris (https://local.drizzle.studio)                      |
+| Käsk                    | Mida teeb                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| `npm run server`        | Käivitab arendusserveri otse TypeScripti failidest (`tsx`), laeb `.env` faili |
+| `npm run typecheck`     | Kontrollib TypeScripti tüübivigu, faile ei loo                                |
+| `npm run build`         | Kompileerib `src/` kausta `dist/` kausta (`tsc`)                              |
+| `npm start`             | Käivitab kompileeritud serveri (`dist/server.js`), tootmiseks                 |
+| `npm run lint`          | Otsib koodist vigu (oxlint)                                                   |
+| `npm run format`        | Vormindab kõik failid ühtsesse stiili (Prettier)                              |
+| `npm run format:check`  | Kontrollib vormingut, faile ei muuda                                          |
+| `docker compose up -d`  | Käivitab Postgresi konteineri taustal                                         |
+| `docker compose down`   | Peatab konteineri (andmed jäävad alles)                                       |
+| `npm run db:generate`   | Loob skeemi muudatustest SQL migratsiooni (`migrations/`)                     |
+| `npm run db:migrate`    | Rakendab migratsioonid andmebaasile                                           |
+| `npm run db:studio`     | Avab andmebaasi brauseris (https://local.drizzle.studio)                      |
+| `npm run auth:generate` | Genereerib Better Authi skeemi faili `src/db/schema/auth.ts`                  |
+
+Kui `src/auth/auth.ts` seadistus muutub, korda: `npm run auth:generate` → `npm run db:generate` → `npm run db:migrate`. Faili `src/db/schema/auth.ts` käsitsi ei muudeta.
 
 ### Andmebaasi muudatused
 
