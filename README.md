@@ -49,6 +49,20 @@ Server käivitub aadressil http://localhost:3000. Peatamiseks vajuta `Ctrl+C`.
 | `npm run format:check` | Kontrollib vormingut, faile ei muuda                                          |
 | `docker compose up -d` | Käivitab Postgresi konteineri taustal                                         |
 | `docker compose down`  | Peatab konteineri (andmed jäävad alles)                                       |
+| `npm run db:generate`  | Loob skeemi muudatustest SQL migratsiooni (`migrations/`)                     |
+| `npm run db:migrate`   | Rakendab migratsioonid andmebaasile                                           |
+| `npm run db:studio`    | Avab andmebaasi brauseris (https://local.drizzle.studio)                      |
+
+### Andmebaasi muudatused
+
+Tabeleid ei looda käsitsi. Iga muudatus käib migratsiooni kaudu:
+
+1. Muuda skeemi (`src/db/schema/`)
+2. `npm run db:generate`: loob SQL migratsiooni kausta `migrations/`
+3. Loe genereeritud SQL läbi
+4. `npm run db:migrate`: rakendab migratsiooni andmebaasile
+
+Migratsioonid lähevad gitti, et iga arendaja ja server jooksutaks samad.
 
 ## Kaustastruktuur
 
