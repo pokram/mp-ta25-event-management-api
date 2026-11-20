@@ -14,16 +14,18 @@
 
 Kopeeri `.env.example` failiks `.env` ja täida väärtused:
 
-| Muutuja              | Näide                                         | Tähendus                                                                           |
-| -------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `DATABASE_USER`      | `app`                                         | Postgresi kasutaja (Docker)                                                        |
-| `DATABASE_PASSWORD`  |                                               | Postgresi parool (Docker)                                                          |
-| `DATABASE_NAME`      | `events`                                      | Andmebaasi nimi (Docker)                                                           |
-| `PORT`               | `3000`                                        | Serveri port (1024-65535)                                                          |
-| `NODE_ENV`           | `development`                                 | `development`, `production` või `test`                                             |
-| `DATABASE_URL`       | `postgres://app:parool@localhost:5432/events` | Rakenduse ühendus andmebaasiga                                                     |
-| `BETTER_AUTH_SECRET` |                                               | Sessioonide allkirjastamise saladus, vähemalt 32 märki (`openssl rand -base64 48`) |
-| `BETTER_AUTH_URL`    | `http://localhost:3000`                       | Rakenduse aadress (Better Auth)                                                    |
+| Muutuja                | Näide                                         | Tähendus                                                                           |
+| ---------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `DATABASE_USER`        | `app`                                         | Postgresi kasutaja (Docker)                                                        |
+| `DATABASE_PASSWORD`    |                                               | Postgresi parool (Docker)                                                          |
+| `DATABASE_NAME`        | `events`                                      | Andmebaasi nimi (Docker)                                                           |
+| `PORT`                 | `3000`                                        | Serveri port (1024-65535)                                                          |
+| `NODE_ENV`             | `development`                                 | `development`, `production` või `test`                                             |
+| `DATABASE_URL`         | `postgres://app:parool@localhost:5432/events` | Rakenduse ühendus andmebaasiga                                                     |
+| `BETTER_AUTH_SECRET`   |                                               | Sessioonide allkirjastamise saladus, vähemalt 32 märki (`openssl rand -base64 48`) |
+| `BETTER_AUTH_URL`      | `http://localhost:3000`                       | Rakenduse aadress (Better Auth)                                                    |
+| `GOOGLE_CLIENT_ID`     |                                               | Google OAuth kliendi id (Google Cloud Console → Google Auth Platform → Clients)    |
+| `GOOGLE_CLIENT_SECRET` |                                               | Google OAuth kliendi saladus                                                       |
 
 Rakendus kontrollib muutujad käivitamisel (`src/config/env.ts`) ega käivitu, kui mõni on puudu või vale.
 
