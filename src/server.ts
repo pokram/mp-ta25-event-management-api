@@ -1,11 +1,10 @@
 import app from "./app.js";
+import {env} from "./config/env.js";
 
-const PORT = 3000;
-
-const server = app.listen(PORT, (error) => {
+const server = app.listen(env.PORT, (error) => {
     if (error) throw error;
     // oxlint-disable-next-line no-console -- asendub pino logijaga (issue 44)
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Server running at http://localhost:${env.PORT}`);
 });
 
 let isShuttingDown = false;
